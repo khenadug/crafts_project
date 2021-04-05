@@ -1,0 +1,55 @@
+<html>
+    <title>Log in or Sign up!</title>
+<head>  
+<link rel="stylesheet" href="crafts.css">
+   
+    </head>   
+<body>
+     <header> Log in </header>
+    
+   
+    
+  <existinguser>
+    <form class="log_in" action="Login.php" method="get" name="log_in">
+        
+        <label for='username'>Username:</label>
+        <input id="username" type="text" name="username" value="" />
+        
+        
+        <label for='password'>Password:</label>
+        <input id="password" type="text" name="password" value="" />
+        <button class="submit" type="submit">Log In</button> 
+        
+        </form>
+   </existinguser> 
+    
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <signup>
+    <form class="signup" action="Signup.php" method="get" name="signup">
+        <ul style="list-style: none;">
+        <li>
+        <label  for='username'>Username:</label>
+        <input id="username" type="text" name="username" value="" />
+         </li>
+        <li>
+        <label for='password'>Password:</label>
+        <input id="password" type="text" name="password" value="" />
+        </li>
+        <li>
+        <label for='email'>Email:</label>
+        <input id="email" type="email" name="email" value="" /> 
+        </li>
+        <br>
+        <button class="submit" type="submit" >Sign Up!</button>
+        </ul>
+    </form>
+   </signup>
+   </body> 
+    
+
+
+</html>
