@@ -23,24 +23,6 @@ header {
 
 }
 
-logo {
-    position: absolute;
-    top: 2;
-    left: 2;
-}
-
-
-existinguser {
-    font-size: 20px;
-    text-align: right;
-    position: absolute;
-    right: 23;
-    top: 51;
-}
-signup {
-     font-size: 30px;
-    text-align: center;
-}
 
 .menubar {
     background-color: #E6CD32;
