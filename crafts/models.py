@@ -4,9 +4,7 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #user_name = models.CharField(max_length=30, unique=True)
-    #password = models.CharField(max_length=30)
-    picture = models.ImageField(upload_to='user_picture', blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
     followers = models.IntegerField(default=0)
     following = models.IntegerField(default=0)
     
@@ -14,7 +12,8 @@ class UserProfile(models.Model):
         return self.user.username
 
 class Post(models.Model):
-    image = models.ImageField(upload_to='post_images', blank=True)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='post_images')
     caption = models.CharField(max_length=180)
     tag = models.CharField(max_length=30)
     date = models.DateField(auto_now_add=True)
@@ -24,6 +23,8 @@ class Post(models.Model):
         return self.caption
 
 class Comment(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.CharField(max_length=300)
     date = models.DateField(auto_now_add=True)
     likes = models.IntegerField(default=0)

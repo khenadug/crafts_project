@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from crafts.models import User, Post, Comment, Message
+from crafts.models import UserProfile, Post, Comment, Message
 #from crafts.forms import [Forms]
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +11,6 @@ def home(request):
     post_list = Post.objects.order_by('-likes')[:20]
     
     context_dict = {}
-    context_dict['bold message'] = 'crafting your curiosity'
     context_dict['posts'] = post_list
     
     return render(request, 'crafts/home.html', context=context_dict)
@@ -35,13 +34,21 @@ def user_login(request):
 
 
 def following(request, user_name):
+    user_list = UserProfile.objects.order_by('-User.username')
     
-    return response
+    context_dict = {}
+    context_dict['following_list'] = user_list
+    
+    return render(request, 'crafts/following.html', context=context_dict)
 
 
 def followers(request, user_name):
+    user_list = UserProfile.objects.order_by('-User.username')
     
-    return response
+    context_dict = {}
+    context_dict['followers_list'] = user_list
+    
+    return render(request, 'crafts/followers.html', context=context_dict)
 
 
 def messages(request, user_name):
