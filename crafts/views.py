@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-#from crafts.models import Post, [other Models]
+from crafts.models import User, Post, Comment, Message
 #from crafts.forms import [Forms]
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
