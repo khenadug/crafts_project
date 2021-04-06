@@ -93,12 +93,12 @@ def user_signup(request):
 
 
 def make_post(request):
-    form = PostForm(user=request.user)
+    form = PostForm()
     if request.method == 'POST':
-        form = PostForm(request.POST, user=request.user)
-        
+        form = PostForm(request.POST, request.FILES) #user=request.user
         if form.is_valid():
-            form.save(commit=True)
+            newPost = Post(user = request.user, image = request.FILES['image'])
+            newPost.save(commit=True)
             return redirect('/crafts/')
         else:
             print(form.errors)

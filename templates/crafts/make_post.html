@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+
+
+<html>
+    
+<head>  
+    <title>Make Post</title>
+    {%load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'crafts/crafts.css'%}">
+  
+    </head>   
+<body>
+     <header></header>
+     
+<div class="menubar">
+    
+    <a href="../home">Home</a>
+</div>
+
+<div class="main">
+	<form action="{% url 'make_post' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<p>{{ form.non_field_erros }}</p>
+		<p>{{ form.image.label_tag }}</p>
+		<p>
+			{{ form.image.errors }}
+			{{ form.image }}
+		</p>
+			{{ form.caption.label_tag }}
+			{{ form.caption }}
+		<p>
+			{{ form.tag.label_tag }}
+			{{ form.tag }}
+		</p>
+		<p> <input type="submit" value="Post" /></p>
+	</form>
+</div>
+ </body>
+</html>
