@@ -22,6 +22,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('crafts/', include('crafts.urls')),
     path('login/', views.user_login, name='login'),
+    path('signup/', views.user_signup, name='sign_up'),
     path('login/mypage/<slug:user_name_slug>/', views.user_page, name='my_page'),
     path('login/following/<slug:user_name_slug>/', views.following, name='following'),
     path('login/followers/<slug:user_name_slug>/', views.followers, name='followers'),
