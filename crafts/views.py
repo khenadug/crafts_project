@@ -57,5 +57,7 @@ def messages(request, user_name):
 
 
 def user_page(request, user_name):
-    
-    return response
+    post_list = Post.objects.get(user.UserProfile.username==user_name)
+    context_dict = {}
+    context_dict['posts'] = post_list
+    return render(request, 'crafts/userpage.html', context=context_dict)

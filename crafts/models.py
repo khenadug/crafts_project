@@ -33,7 +33,7 @@ class Comment(models.Model):
         return self.text
 
 class Message(models.Model):
-    recipient = models.CharField(max_length=30)
+    recipient = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     text = models.CharField(max_length=300)
     date = models.DateField(auto_now_add=True)
     
