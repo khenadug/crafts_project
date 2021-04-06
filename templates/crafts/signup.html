@@ -1,38 +1,19 @@
+ <!DOCTYPE html>
+
+
 <html>
-<head>
-    <title>Log in or Sign up!</title>
-        {%load static%}
+    
+<head>  
+    <title>Create an account</title>
+    {%load static%}
 
     <link rel="stylesheet" href="{% static 'crafts.css'%}">
- 
-<link rel="stylesheet" href="crafts.css">
-   
-    </head>   
-<body>
-     <header> Log in </header>
-    
-   
-    
-  <existinguser>
-    <form class="log_in" action="" method="get" name="log_in">
-        
-        <label for='username'>Username:</label>
-        <input id="username" type="text" name="username" value="" />
-        
-        
-        <label for='password'>Password:</label>
-        <input id="password" type="text" name="password" value="" />
-        <button class="submit" type="submit">Log In</button> 
-        
-        </form>
-   </existinguser> 
-    
-    
-    <br>
-    <br>
-    <br>
-    <br>
-    <signup>
+  
+    </head>
+    <body>
+
+
+ <signup>
     <form class="signup" action="" method="get" name="signup">
         <ul style="list-style: none;">
         <li>
@@ -52,5 +33,7 @@
         </ul>
     </form>
    </signup>
-   </body> 
-    
+
+</body>
+
+   </html>
