@@ -32,7 +32,16 @@
 </div>
 
 <div class="main">
-
+	{% if categories %}
+		{% for posts in posts%}
+			<p> {{ post.user }} {{ post.date }} </p>
+			<p> {{ post.image }} </p>
+			<p> {{ post.caption }} <strong> {{ post.tag }} </strong></p>
+			<p> {{ post.date }} </p>
+		{% endfor %}
+	{% else %}
+		<strong>This user has no posts</strong>
+	{% endif %}
 
     </div>
     

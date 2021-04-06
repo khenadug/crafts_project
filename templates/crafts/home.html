@@ -18,14 +18,23 @@
     
     <a href="login">Login</a>
     <a href="signup">Create an Account</a>
-    <a href=""></a>
+    <a href="make_post">Make Post</a>
     <a href=""></a>
     <a href=""></a>
     <input type="text" placeholder="Search..">
 </div>
 
 <div class="main">
-
+	{% if categories %}
+		{% for posts in posts%}
+			<p> {{ post.user }} {{ post.date }} </p>
+			<p> {{ post.image }} </p>
+			<p> {{ post.caption }} <strong> {{ post.tag }} </strong></p>
+			<p> {{ post.date }} </p>
+		{% endfor %}
+	{% else %}
+		<strong>Be the first to post!</strong>
+	{% endif %}
 
 </div>
  </body>
