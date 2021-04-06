@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from crafts.models import UserProfile, Post, Comment, Message
-from crafts.forms import UserForm, UserProfileForm
+from crafts.forms import UserForm, UserProfileForm, PostForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -14,6 +14,36 @@ def home(request):
     context_dict['posts'] = post_list
     
     return render(request, 'crafts/home.html', context=context_dict)
+
+
+def following(request, user_name):
+    user_list = UserProfile.objects.order_by('-User.username')
+    
+    context_dict = {}
+    context_dict['following_list'] = user_list
+    
+    return render(request, 'crafts/following.html', context=context_dict)
+
+
+def followers(request, user_name):
+    user_list = UserProfile.objects.order_by('-User.username')
+    
+    context_dict = {}
+    context_dict['followers_list'] = user_list
+    
+    return render(request, 'crafts/followers.html', context=context_dict)
+
+
+def messages(request, user_name):
+    
+    return response
+
+
+def user_page(request, user_name):
+    post_list = Post.objects.get(user.UserProfile.username==user_name)
+    context_dict = {}
+    context_dict['posts'] = post_list
+    return render(request, 'crafts/userpage.html', context=context_dict)
 
 
 def user_login(request):
@@ -62,31 +92,14 @@ def user_signup(request):
                             'registered': registered})
 
 
-def following(request, user_name):
-    user_list = UserProfile.objects.order_by('-User.username')
-    
-    context_dict = {}
-    context_dict['following_list'] = user_list
-    
-    return render(request, 'crafts/following.html', context=context_dict)
-
-
-def followers(request, user_name):
-    user_list = UserProfile.objects.order_by('-User.username')
-    
-    context_dict = {}
-    context_dict['followers_list'] = user_list
-    
-    return render(request, 'crafts/followers.html', context=context_dict)
-
-
-def messages(request, user_name):
-    
-    return response
-
-
-def user_page(request, user_name):
-    post_list = Post.objects.get(user.UserProfile.username==user_name)
-    context_dict = {}
-    context_dict['posts'] = post_list
-    return render(request, 'crafts/userpage.html', context=context_dict)
+def make_post(request):
+    form = PostForm(user=request.user)
+    if request.method == 'POST':
+        form = PostForm(request.POST, user=request.user)
+        
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('/crafts/')
+        else:
+            print(form.errors)
+    return render(request, 'crafts/make_post.html', {'form': form})
